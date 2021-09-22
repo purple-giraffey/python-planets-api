@@ -9,7 +9,7 @@ pip install uvicorn
 
 ### Run and watch the project:
 ```
-uvicorn demo:app --reload
+uvicorn main:app --reload
 ```
 ^ runs a server on [localhost:8000]()
 
