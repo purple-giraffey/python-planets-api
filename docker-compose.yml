@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+  planets-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    restart: always
+    depends_on:
+      - postgres
+    networks:
+      - testnetwork
+
+  postgres:
+    image: "postgres:14.4"
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    restart: always
+    networks:
+      - testnetwork
+
+networks:
+  testnetwork:
+    driver: bridge

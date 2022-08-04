@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from sqlalchemy import update, exc
+from sqlalchemy import exc
 import models
 import schemas
 

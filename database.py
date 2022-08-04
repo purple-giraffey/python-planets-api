@@ -3,12 +3,15 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 # connect to an SQLite database (open file with SQLite db)
-SQLALCHEMY_DB_URL = "sqlite:///./app.db"
+# SQLALCHEMY_DB_URL = "sqlite:///./app.db"
+# engine = create_engine(SQLALCHEMY_DB_URL, connect_args={
+#                        "check_same_thread": False})
+
+SQLALCHEMY_DB_URL = "postgresql://postgres:postgres@postgres:5432/postgres"
 
 # check_same_thread argument only used for SQLite
 # to allow more than one thread interacting with the db for the same request
-engine = create_engine(SQLALCHEMY_DB_URL, connect_args={
-                       "check_same_thread": False})
+engine = create_engine(SQLALCHEMY_DB_URL)
 
 # each instance of the SessionLocal class will be a database session
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
